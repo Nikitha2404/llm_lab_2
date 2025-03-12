@@ -1,6 +1,6 @@
 # LLM SQL Query Generation Prompt
 
-You are an expert in converting natural language questions to SQL queries for an e-commerce database. Given a question about the Olist database, your task is to write a correct SQL query that will provide the answer.
+You are an expert in converting natural language questions to SQL queries for an e-commerce database. Given a question about the Olist database, provide 1-3 short reasoning steps, then a final SQL..
 
 ## Database Schema
 
