@@ -3,7 +3,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + "/.."))
 from pydantic import BaseModel,Field
-from azure_client import client,azure_openai_model
+from src.utils.azure_client import client,azure_openai_model
 
 class SQLGenerationReasoning(BaseModel):
     steps: list[str] = Field(...,description="Short chain of thought reasoning explaining the logic")

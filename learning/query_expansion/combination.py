@@ -3,7 +3,7 @@ import os
 from typing import Dict
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + "/.."))
 from pydantic import BaseModel,Field
-from azure_client import client,azure_openai_model
+from src.utils.azure_client import client,azure_openai_model
 
 class QueryProcessor(BaseModel):
     original_query: str = Field(..., description="The original user query")

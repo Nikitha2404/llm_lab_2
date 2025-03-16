@@ -4,7 +4,7 @@ import os
 from opentelemetry.instrumentation.httpx import HTTPXClientInstrumentor
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + "/.."))
-from azure_client import client,azure_openai_model
+from src.utils.azure_client import client,azure_openai_model
 from pydantic import BaseModel, Field
 
 # SQL query generation output format

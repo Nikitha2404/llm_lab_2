@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from azure_client import client,logging,azure_openai_model
+from src.utils.azure_client import client,logging,azure_openai_model
 
 class Step(BaseModel):
     explanation: str
