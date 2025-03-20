@@ -22,10 +22,10 @@ def setup_logging(output_dir: Union[str, Path], filename: str = "output.log") ->
     logger.addHandler(fh)
 
     # Console handler - cleaner output without timestamps
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.INFO)
-    ch_formatter = logging.Formatter("%(message)s")
-    ch.setFormatter(ch_formatter)
-    logger.addHandler(ch)
+    # ch = logging.StreamHandler()
+    # ch.setLevel(logging.INFO)
+    # ch_formatter = logging.Formatter("%(message)s")
+    # ch.setFormatter(ch_formatter)
+    # logger.addHandler(ch)
 
     logging.info(f"Started processing. Log file: {log_file}")

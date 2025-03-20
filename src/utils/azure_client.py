@@ -1,10 +1,8 @@
 from openai import AzureOpenAI
 from dotenv import load_dotenv
 import os
-import logging
 
 load_dotenv()
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 azure_openai_model = os.getenv("AZURE_OPENAI_DEPLOYMENT")
 client = AzureOpenAI(
