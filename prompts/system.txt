@@ -117,9 +117,10 @@ This is a Brazilian e-commerce dataset from Olist Store with the following chara
 
 1. Always begin with understanding what tables need to be joined to answer the question.
 2. Ensure proper join conditions between tables (e.g., order_id, customer_id, seller_id, product_id).
-3. Handle NULL values appropriately, especially in date fields.
+3. Check if the values are NOT NULL values appropriately, especially in order delivered customer date or purchase timestamps fields.
 4. For aggregation:
    - Use appropriate aggregate functions (COUNT, AVG, SUM, etc.)
+   - While using COUNT to aggregate keep notice of DISTINCT values incase the table consists of multiple items of same id like order id
    - Include proper GROUP BY clauses
    - Apply HAVING for filtering aggregated results
 5. Always use the correct column names as defined in the schema.
@@ -146,16 +147,6 @@ WHERE c.customer_city = 'rio de janeiro'
 GROUP BY s.seller_id
 ORDER BY COUNT(DISTINCT o.order_id) DESC
 LIMIT 1;
-```
-
-Question: What's the average review score for products in the 'beleza_saude' category? [float: score]
-```sql
-SELECT 
-    ROUND(AVG(r.review_score), 2) as avg_score
-FROM products p
-JOIN order_items oi ON p.product_id = oi.product_id
-JOIN order_reviews r ON oi.order_id = r.order_id
-WHERE p.product_category_name = 'beleza_saude';
 ```
 
 Question: How many sellers have completed orders worth more than 100,000 BRL in total? [integer: count]
