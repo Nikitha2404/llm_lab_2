@@ -218,7 +218,7 @@ class LLMStats:
         # Add Azure caching information
         if summary['azure_cached_tokens'] > 0:
             logging.info("-"*50)
-            logging.info(f"AZURE OPENAI PROMPT CACHING:")
+            logging.info("AZURE OPENAI PROMPT CACHING:")
             logging.info(f"  Items with cached tokens: {summary['azure_cached_items']}")
             logging.info(f"  Azure cached tokens: {summary['azure_cached_tokens']:,}")
             logging.info(f"  Cost saved (50% discount): ${summary['azure_cached_cost_saved']:.4f}")
@@ -227,7 +227,7 @@ class LLMStats:
                 logging.info(f"  Caching rate: {cache_rate:.2f}% of prompt tokens")
         else:
             logging.info("-"*50)
-            logging.info(f"No Azure OpenAI prompt caching detected")
-            logging.info(f"To optimize for caching, keep system prompts consistent and at least 1024 tokens long")
+            logging.info("No Azure OpenAI prompt caching detected")
+            logging.info("To optimize for caching, keep system prompts consistent and at least 1024 tokens long")
 
         logging.info("="*50)

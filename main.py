@@ -1,6 +1,6 @@
 from src.utils.logging import setup_logging
 from src.pkg.sql import execute_query
-from src.pkg.query import get_query_azure_openai
+from src.pkg.query import get_query_azure_openai,llmstats
 
 questions = [
     "Which seller has delivered the most orders to customers in Rio de Janeiro? [string: seller_id]",
@@ -24,4 +24,4 @@ if __name__ == "__main__":
             print(sql_query)
             query_result= execute_query(sql_query)
             print("\nQuery Result: ",query_result)
-
+    llmstats.log_summary()
