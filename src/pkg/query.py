@@ -34,7 +34,7 @@ def build_chain_of_thought_messages(answer: str | None):
     if answer != None:
         answer_dict = {"role":"assistant","content":answer}
     messages.append(answer_dict)
-    messages = trim_messages(messages=messages)
+    #messages = trim_messages(messages=messages)
     return messages
 
 def build_messages(question: str|None):
