@@ -1,7 +1,6 @@
-import logging
 from src.utils.logging import setup_logging
 from src.pkg.sql import execute_query
-from src.pkg.query import get_system_query,get_query_azure_openai
+from src.pkg.query import get_query_azure_openai
 
 questions = [
     "Which seller has delivered the most orders to customers in Rio de Janeiro? [string: seller_id]",
