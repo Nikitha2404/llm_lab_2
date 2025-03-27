@@ -13,7 +13,7 @@ def execute_query(query):
         result = parse_dataframe(df)
         return result
     except sqlite3.Error as e:
-        raise ConnectionError(e)
+        raise ValueError(e)
 
 def parse_dataframe(df):
     for col in df.select_dtypes(include=['object']).columns:
