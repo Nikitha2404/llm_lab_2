@@ -7,6 +7,9 @@ def dbInit():
 
 def execute_query(query):
     try:
+        for keyword in ["DROP", "DELETE", "ALTER", "UPDATE"]:
+            if keyword in query.upper():
+                return"⚠️ Potentially destructive SQL detected!"
         conn = dbInit()
         df = pd.read_sql_query(query, conn)
         conn.close()
@@ -16,6 +19,6 @@ def execute_query(query):
         raise ValueError(e)
 
 def parse_dataframe(df):
-    for col in df.select_dtypes(include=['object']).columns:
-        df[col] = df[col].str.lower()
-    return df
+    if df.empty or df.shape[1] == 0:
+        return set()
+    return set(df.iloc[:, 0].astype(str))
