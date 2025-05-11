@@ -10,7 +10,7 @@ setup_logging(output_dir=os.getenv("BASE_DIR_PATH"))
 
 mcp = FastApiMCP(app,include_operations=["resume_check"])
 mcp.mount()
-mcp.setup_server()
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
+    

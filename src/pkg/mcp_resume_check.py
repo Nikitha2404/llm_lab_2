@@ -17,6 +17,7 @@ class ResumeChecklist(BaseModel):
     education_level: str = Field(..., description="Highest education level attained (e.g. Bachelor's, Master's, PhD) and also the specialisation taken")
     current_job_role: str = Field(..., description="Most recent or current job title mentioned in resume")
     projects_count: Optional[int] = Field(None, description="Number of distinct projects mentioned or led in resume")
+    salary_expectation: Optional[int] = Field(None, description="Salary expectations of the candidate")
 
 @app.post("/resume_check",response_model=ResumeChecklist, operation_id="resume_check")
 async def resume_check(input: str):
