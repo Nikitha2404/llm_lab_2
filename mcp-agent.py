@@ -6,14 +6,11 @@ from agents.mcp import MCPServerSse
 from dotenv import load_dotenv
 from src.utils.azure_client import azure_openai_model,client
 from src.pkg.mcp_resume_check import ResumeChecklist
+from src.utils.logging import setup_logging
 from pydantic import BaseModel,Field
 from typing import Optional
 load_dotenv()
-
-openai.api_key = os.getenv("OPENAI_API_KEY")
-openai.api_type = os.getenv("AZURE_OPENAI_DEPLOYMENT")
-openai.api_version = os.getenv("AZURE_OPENAI_API_VERSION")
-openai.api_base = os.getenv("AZURE_OPENAI_ENDPOINT")
+setup_logging(output_dir=os.getenv("BASE_DIR_PATH"),filename="agent.log")
 
 class DesicionResponse(BaseModel):
     hire: str = Field(...,description="Answer in Yes for hiring or No for not hiring")

@@ -12,11 +12,11 @@ def setup_logging(output_dir: Union[str, Path], filename: str = "output.log") ->
     if logger.hasHandlers():
         logger.handlers.clear()
 
-    logger.setLevel(logging.INFO)
+    logger.setLevel(logging.DEBUG)
 
     # File handler - includes timestamps
     fh = logging.FileHandler(log_file, encoding='utf-8')
-    fh.setLevel(logging.INFO)
+    fh.setLevel(logging.DEBUG)
     fh_formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
     fh.setFormatter(fh_formatter)
     logger.addHandler(fh)
