@@ -1,7 +1,7 @@
 import os
 import asyncio
-import openai
-from agents import Agent,Runner
+from openai import AsyncAzureOpenAI
+from agents import Agent,Runner,OpenAIChatCompletionsModel
 from agents.mcp import MCPServerSse
 from dotenv import load_dotenv
 from src.utils.azure_client import azure_openai_model,client
@@ -48,10 +48,18 @@ async def extract_resume_details(input:str,agent:Agent):
 async def main():
     tools_server = MCPServerSse({"url":"http://localhost:8000/mcp"},client_session_timeout_seconds=15.0)
     try:
+        azure_async_client = AsyncAzureOpenAI(
+            azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+            api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+            api_version=os.getenv("AZURE_OPENAI_API_VERSION")
+        )
         await tools_server.connect()
         agent = Agent(
             name="HR Assistant",
-            model=azure_openai_model,
+            model=OpenAIChatCompletionsModel(
+                model=azure_openai_model,
+                openai_client=azure_async_client
+            ),
             instructions="You are an HR assistant that analyzes resumes. You have a tool to parse resumes for details.",
             mcp_servers=[tools_server]
         )
